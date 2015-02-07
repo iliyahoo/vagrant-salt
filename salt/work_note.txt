@@ -1,0 +1,40 @@
+salt minion-2 grains.item roles
+salt -G 'roles:appserver' test.ping
+salt \* cmd.run 'grep root /etc/passwd'
+salt \* user.add jane 1001
+salt \* user.chfullname jane 'Jane Doe'
+salt \* sys.doc test.ping
+salt \* sys.doc user
+salt \* pkg.latest_version at
+salt \* pkg.list_upgrades
+salt minion-1 pkg.install httpd
+salt \* pkg.available_version httpd
+salt \* service.available httpd
+salt \* service.enable httpd
+salt \* service.start httpd
+salt \* service.status httpd
+salt --verbose \* service.status httpd
+salt --log-level debug minion-1 service.status httpd
+salt-run --output=yaml jobs.lookup_jid 20150207192521752901
+salt \*  test.ping --output=yaml
+
+salt minion-1 state.sls default
+salt minion-1 state.single user.present name='jane' fullname='Jane Doe' uid=1001 home='/home/jane'
+salt minion-1 state.low '{state: user, fun: present, name: jane, fullname: Jane Doe, uid: 1001, home: /home/jane}'
+
+# This can be very handy when debugging complex states as it shows not only the raw data,
+# but also where in the file roots the SLS file came from and which file is read
+salt minion-1 state.show_sls default --out=yaml
+# this looks exactly like the output from state.show_sls default
+# The big difference is that the state (default) is not specified
+salt minion-1 state.show_highstate --out yaml
+
+# get the file root on the minion
+salt minion-1 config.get file_roots
+
+salt \* state.highstate
+
+# default.sls and default/init.sls are referenced simply by default .
+# To deal with this overlap, salt has to make a decision which one to use.
+# You can think of it as; shortest name wins. If both default.sls and default/init.sls exist,
+# then default.sls will be used and de fault/init.sls will be ignored
