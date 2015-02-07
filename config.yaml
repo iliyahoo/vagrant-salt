@@ -1,20 +1,20 @@
 ---
-vagrantfile-gce:
-    vm:
-        box: centos7
-        hosts: [&num-1 'master',&num-2 'minion-1']
-        synced_folder:
-            devops:
-                source: .
-                target: /srv/
-        instance:
-            *num-1:
-                role: 'master'
-                ip: 172.28.128.10
-            *num-2:
-                role: 'minion'
-                ip: 172.28.128.11
-        auth:
-            private_key: /home/iliya/.ssh/id_dsa
-        provision:  
-            salt: ./salt-bootstrap.sh
+vagrantfile:
+    box: centos7
+    hosts:
+      - master
+      - minion-1
+    master:
+        role: master
+        ip: 172.28.128.10
+    minion-1:
+        role: minion
+        ip: 172.28.128.11
+    synced_folder:
+        devops:
+            source: .
+            target: /srv/
+    auth:
+        private_key: /home/iliya/.ssh/id_dsa
+    provision:
+        salt: ./salt-bootstrap.sh
