@@ -38,3 +38,18 @@ salt \* state.highstate
 # To deal with this overlap, salt has to make a decision which one to use.
 # You can think of it as; shortest name wins. If both default.sls and default/init.sls exist,
 # then default.sls will be used and de fault/init.sls will be ignored
+
+# list available grains
+salt minion-1 grains.ls
+# When calling grains.setval , the salt-minion will write these values into 
+# /etc/salt/grains so they persist
+salt minion-1 grains.setval name xyu
+salt minion-1 grains.item name
+
+# state files that would be applied by using state.show_top
+salt minion-1 state.show_top
+
+# get pillar path file
+salt config.get pillat_root
+
+salt minion-\* pillar.item users
