@@ -24,6 +24,6 @@ elif [[ "$Stat" == "minion" ]] ; then
   echo "Salt package has been already installed."
 #  exit
 else
-  sudo sh ${Folder}/install_salt.sh ${Param} -p vim -p net-tools -p bash-completion -p vim -p git -p wget
+  sudo sh ${Folder}/install_salt.sh ${Param} -p vim -p screen -p net-tools -p bash-completion -p vim -p git -p wget
 fi
 

@@ -25,7 +25,7 @@ Vagrant.configure('2') do |config|
       end
       config.vm.provision "shell",
         path: "#{data['provision']['salt']}",
-        args: "#{data[opts]['role']} #{opts} #{data[opts]['ip']} #{data['synced_folder']['target']}"
+        args: "#{data[opts]['role']} #{opts} #{data[opts]['ip']} #{data['synced_folder']['devops']['target']}"
     end
   end
 end
