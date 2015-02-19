@@ -17,7 +17,7 @@ vagrantfile:
     synced_folder:
         devops:
             source: .
-            target: /srv/
+            target: /srv
     auth:
         private_key: /home/iliya/.ssh/id_dsa
     provision:
