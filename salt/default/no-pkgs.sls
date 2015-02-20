@@ -1,2 +1,0 @@
-exclude:
-  - sls: default.pkgs
