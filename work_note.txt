@@ -45,6 +45,7 @@ salt minion-1 grains.ls
 # /etc/salt/grains so they persist
 salt minion-1 grains.setval name xyu
 salt minion-1 grains.item name
+salt minion-1 grains.delval name destructive=True
 
 # state files that would be applied by using state.show_top
 salt minion-1 state.show_top
@@ -53,3 +54,28 @@ salt minion-1 state.show_top
 salt config.get pillat_root
 
 salt minion-\* pillar.item users
+
+# trust minion's key (fngerprints should)
+salt-key -f minion-1
+
+salt minion-1 sys.list_functions cmd.tty
+salt-key -f minion-1
+salt-call --local key.finger
+
+# help
+# show all functions
+salt minion-1 sys.list_functions cmd
+salt minion-1 sys.doc cmd.run
+
+# return both stderr and stdout
+salt minion-1 cmd.run_all "pss"
+
+# list state modules
+salt \* sys.list_state_modules
+salt \* sys.list_state_functions pkg
+salt \* sys.state_doc pkg.installed
+
+# Pillar data is automatically refreshed whenever we run any states. However, it's
+# sometimes useful to explicitly refresh the pillar data.
+salt \* saltutil.refresh_pillar
+salt \* pillar.items

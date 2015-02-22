@@ -11,7 +11,7 @@ repo=$6
 [[ "$Role" == "minion" ]] && Param="-i ${Id} -A ${Master}"
 
 # check if salt is already installed
-pgrep salt-${Role} &>/dev/null
+pgrep -x salt-${Role} &>/dev/null
 if [[ "$?" -eq 0 ]] ; then
   echo "Salt package has been already installed."
   if [[ "${Role}" == "master" ]] ; then
