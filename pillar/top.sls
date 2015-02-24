@@ -1,8 +1,6 @@
 base:
   '*':
-    - test
-    - users
-  'roles:appserver':
+    - core
+  'os_family:RedHat':
     - match: grain
-    - users.app
-
+    - ssh_key

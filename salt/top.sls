@@ -1,9 +1,7 @@
 base:
   '*':
-    - default
-  'roles:webserver':
+    - myuser.user
+    - myuser.dotfiles
+  'os_family:redhat':
     - match: grain
-  minion-1:
-    - webserver
-#    - default.no-pkgs
-#    - default.no-jane
+    - users_and_ssh
