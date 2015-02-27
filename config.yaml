@@ -27,3 +27,6 @@ vagrantfile:
         version: 2014.7.0
         repo: https://github.com/saltstack/salt.git
 #        repo: https://storage.googleapis.com/salt-repo/salt.git
+#
+# [[ -d $HOME/.vagrant.d/boxes/ubuntu_12.04 ]] || vagrant box add ubuntu_12.04 https://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box
+# [[ -d $HOME/.vagrant.d/boxes/centos7 ]] || vagrant box add centos7 https://f0fff3908f081cb6461b407be80daf97f07ac418.googledrive.com/host/0BwtuV7VyVTSkUG1PM3pCeDJ4dVE/centos7.box
