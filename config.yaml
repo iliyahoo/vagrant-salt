@@ -1,6 +1,6 @@
 ---
 vagrantfile:
-    box: centos7
+    box: iliya/centos-7
     hosts:
       - master
       - minion-1
@@ -24,3 +24,8 @@ vagrantfile:
         salt: ./salt-bootstrap.sh
         version: 2014.7.0
         repo: https://storage.googleapis.com/salt-repo/salt.git
+
+# cd some_folder
+# vagrant package --base vagrant-salt_minion-1_1429901246439_97751 --output centos-7 --vagrantfile Vagrantfile --include salt-bootstrap.sh,install_salt.sh,config.yaml
+# vagrant box add --name iliya/centos-7 --provider virtualbox some_folder/centos-7
+# vagrant up

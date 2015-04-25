@@ -4,6 +4,8 @@
 require 'yaml'
 require 'fog/version'
 
+ENV['VAGRANT_DEFAULT_PROVIDER'] = 'virtualbox'
+
 dir = File.dirname(File.expand_path(__FILE__))
 configValues = YAML.load_file("#{dir}/config.yaml")
 data = configValues['vagrantfile']
