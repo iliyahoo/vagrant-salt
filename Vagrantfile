@@ -18,6 +18,7 @@ Vagrant.configure('2') do |config|
       config.vm.box = "#{data['box']}"
       config.vm.hostname = opts
       config.vm.network "private_network", ip: "#{data[opts]['ip']}"
+      config.vm.network "public_network"
       config.ssh.private_key_path = "#{data['auth']['private_key']}"
       config.vm.synced_folder ".", "/vagrant", disabled: true
       data['synced_folder'].each do |i, folder|

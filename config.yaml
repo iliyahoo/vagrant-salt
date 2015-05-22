@@ -11,9 +11,9 @@ vagrantfile:
     minion-1:
         role: minion
         ip: 172.28.128.11
-#    minion-2:
-#        role: minion
-#        ip: 172.28.128.12
+    minion-2:
+        role: minion
+        ip: 172.28.128.12
     synced_folder:
         devops:
             source: .
@@ -25,7 +25,7 @@ vagrantfile:
         version: 2014.7.0
         repo: https://storage.googleapis.com/salt-repo/salt.git
 
-# cd some_folder
-# vagrant package --base vagrant-salt_minion-1_1429901246439_97751 --output centos-7 --vagrantfile Vagrantfile --include salt-bootstrap.sh,install_salt.sh,config.yaml
-# vagrant box add --name iliya/centos-7 --provider virtualbox some_folder/centos-7
-# vagrant up
+## cd some_folder
+## vagrant package --base vagrant-salt_minion-1_1429901246439_97751 --output centos-7 --vagrantfile Vagrantfile --include salt-bootstrap.sh,install_salt.sh,config.yaml
+## vagrant box add --name iliya/centos-7 --provider virtualbox some_folder/centos-7
+## vagrant up
